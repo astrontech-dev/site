@@ -175,11 +175,69 @@ footer img{height:14px;display:block}
 .js .revela.visivel{opacity:1;transform:none}
 .estatico .revela,.estatico .trilha li{opacity:1!important;transform:none!important;animation:none!important}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.revela{opacity:1;transform:none}.trilha li{opacity:1;transform:none}}
+
+/* ===== abertura (intro) ===== */
+.intro{position:fixed;inset:0;z-index:100;background:var(--preto);display:grid;place-items:center;overflow:hidden}
+.intro .simb{width:min(22vw,150px);overflow:visible}
+.intro .simb path.a{fill:none;stroke:var(--branco);stroke-width:14;stroke-linejoin:miter;stroke-dasharray:3200;stroke-dashoffset:3200;animation:traca 1s cubic-bezier(.7,0,.2,1) .15s forwards}
+.intro .simb path.b{fill:var(--azul);transform:scaleX(0);transform-origin:left center;transform-box:fill-box;animation:barra .45s cubic-bezier(.7,0,.2,1) 1s forwards}
+.intro .leg{position:absolute;bottom:clamp(28px,6vh,56px);left:0;right:0;text-align:center;font-family:var(--f-dados);font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--chumbo-esc);opacity:0;animation:aparece .4s ease .6s forwards}
+.intro .leg b{color:var(--branco);font-weight:400}
+.intro .cortina{position:absolute;inset:0;display:grid;grid-template-columns:repeat(6,1fr);pointer-events:none}
+.intro .cortina i{background:var(--preto)}
+.intro.sai{background:transparent}
+.intro.sai .simb,.intro.sai .leg{opacity:0;transform:scale(.92);transition:opacity .25s,transform .35s}
+.intro.sai .cortina i{transform:translateY(-101%);transition:transform .7s cubic-bezier(.76,0,.24,1)}
+.intro.sai .cortina i:nth-child(2){transition-delay:.04s}.intro.sai .cortina i:nth-child(3){transition-delay:.08s}
+.intro.sai .cortina i:nth-child(4){transition-delay:.12s}.intro.sai .cortina i:nth-child(5){transition-delay:.16s}.intro.sai .cortina i:nth-child(6){transition-delay:.2s}
+@keyframes traca{to{stroke-dashoffset:0}}
+@keyframes barra{to{transform:scaleX(1)}}
+@keyframes aparece{to{opacity:1}}
+
+/* ===== hero vivo ===== */
+.hero{position:relative;overflow:hidden;isolation:isolate}
+#campo{position:absolute;inset:0;z-index:-1;width:100%;height:100%;display:block}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(600px circle at var(--mx,70%) var(--my,40%),rgba(47,107,255,.07),transparent 60%)}
+.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.06em}
+.hero h1 .ln > span{display:inline-block}
+.js .hero h1 .ln > span{transform:translateY(105%)}
+.js .hero .eyebrow,.js .hero p.lead,.js .hero .acoes,.js .hero .trilha{opacity:0}
+.pronto .hero h1 .ln > span{animation:sobe .9s cubic-bezier(.16,1,.3,1) both}
+.pronto .hero h1 .ln:nth-child(2) > span{animation-delay:.08s}
+.pronto .hero h1 .ln:nth-child(3) > span{animation-delay:.16s}
+.pronto .hero .eyebrow{animation:surge .6s ease .05s both}
+.pronto .hero p.lead{animation:surge .8s ease .45s both}
+.pronto .hero .acoes{animation:surge .8s ease .6s both}
+.pronto .hero .trilha{animation:card 1s cubic-bezier(.16,1,.3,1) .35s both}
+/* rede de segurança: se a animação travar, o conteúdo aparece mesmo assim */
+.fim .hero h1 .ln > span,.fim .hero .eyebrow,.fim .hero p.lead,.fim .hero .acoes{opacity:1!important;transform:none!important;animation:none!important}
+.fim .hero .trilha{opacity:1!important;animation:none!important}
+@keyframes sobe{from{transform:translateY(105%)}to{transform:none}}
+@keyframes surge{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@keyframes card{from{opacity:0;transform:translateY(24px) scale(.98)}to{opacity:1;transform:none}}
+.hero .eyebrow .digita::after{content:"▍";color:var(--azul);animation:pisca 1s steps(2) infinite;margin-left:2px}
+.hero .ponto{display:inline-block}
+.pronto .hero .ponto{animation:pulsa 2.8s ease-in-out 1.4s infinite}
+@keyframes pulsa{0%,100%{text-shadow:0 0 0 rgba(47,107,255,0)}50%{text-shadow:0 0 22px rgba(47,107,255,.55)}}
+.btn-azul{position:relative;overflow:hidden}
+.btn-azul::before{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.28) 50%,transparent 70%);transform:translateX(-120%);transition:transform .7s ease}
+.btn-azul:hover::before{transform:translateX(120%)}
+.trilha{transition:transform .2s ease-out;will-change:transform}
+.progresso{position:absolute;left:0;bottom:-1px;height:2px;background:var(--azul);width:0}
+.estatico .intro{display:none}
+@media (prefers-reduced-motion:reduce){.intro{display:none}#campo{display:none}.js .hero h1 .ln > span,.js .hero .eyebrow,.js .hero p.lead,.js .hero .acoes,.js .hero .trilha{opacity:1!important;transform:none!important}}
+.estatico .hero h1 .ln > span,.estatico .hero .eyebrow,.estatico .hero p.lead,.estatico .hero .acoes,.estatico .hero .trilha{opacity:1!important;transform:none!important}
 </style>
 </head>
 <body>
+<div class="intro" id="intro" aria-hidden="true">
+  <svg class="simb" viewBox="60 180 904 690"><path class="a" d="M87.9 842.8 L459.0 206.7 L565.0 206.7 L936.1 842.8 L843.3 842.8 L512.0 274.8 L180.7 842.8 Z"/><path class="b" d="M298.0 697.0 L726.0 697.0 L687.3 630.7 L336.7 630.7 Z"/></svg>
+  <div class="leg">Astrontech · <b>software que chega em produção</b></div>
+  <div class="cortina"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+</div>
 
 <header class="topo">
+  <div class="progresso" id="progresso"></div>
   <div class="wrap">
     <a href="#inicio" aria-label="Astrontech, início"><img src="assets/img/astrontech-logo-positivo.svg" alt="Astrontech"></a>
     <nav aria-label="Principal">
@@ -195,11 +253,12 @@ footer img{height:14px;display:block}
 <main id="inicio">
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero" id="hero">
+  <canvas id="campo" aria-hidden="true"></canvas>
   <div class="wrap grade">
     <div>
-      <div class="eyebrow">Consultoria de tecnologia · Jurídico e seguros</div>
-      <h1 class="marca">Software que<br>chega em<br>produção<span class="ponto">.</span></h1>
+      <div class="eyebrow"><span class="digita" data-txt="Consultoria de tecnologia · Jurídico e seguros">Consultoria de tecnologia · Jurídico e seguros</span></div>
+      <h1 class="marca"><span class="ln"><span>Software que</span></span><span class="ln"><span>chega em</span></span><span class="ln"><span>produção<span class="ponto">.</span></span></span></h1>
       <p class="lead">Criamos produtos digitais e automações para escritórios de advocacia e seguradoras. Do escopo ao deploy, com cada etapa rastreada e você aprovando o que importa.</p>
       <div class="acoes">
         <a class="btn btn-azul chanfro" href="#contato">Iniciar um projeto <span class="seta">→</span></a>
@@ -392,6 +451,83 @@ footer img{height:14px;display:block}
 document.documentElement.classList.add("js");
 if (new URLSearchParams(location.search).has("estatico")) document.documentElement.classList.add("estatico");
 (() => {
+  // ——— Abertura ———
+  const raiz = document.documentElement;
+  const estat = raiz.classList.contains("estatico");
+  const semMov = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const intro = document.getElementById("intro");
+  const eb = document.querySelector(".hero .digita");
+  function digita(){
+    if (!eb || estat || semMov) return;
+    const t = eb.dataset.txt; eb.textContent = ""; let k = 0;
+    const tick = () => { eb.textContent = t.slice(0, ++k); if (k < t.length) setTimeout(tick, 22); else setTimeout(()=>eb.classList.remove("digita"), 1600); };
+    tick();
+  }
+  function revela(){ raiz.classList.add("pronto"); digita(); setTimeout(()=>raiz.classList.add("fim"), 2200); }
+  const jaViu = sessionStorage.getItem("astron-intro");
+  if (estat || semMov || jaViu){ intro.remove(); estat||semMov ? raiz.classList.add("pronto") : revela(); }
+  else {
+    sessionStorage.setItem("astron-intro","1");
+    document.body.style.overflow = "hidden";
+    let saiu = false;
+    const sai = () => { if (saiu) return; saiu = true; intro.classList.add("sai"); setTimeout(revela, 250); setTimeout(()=>{ intro.remove(); document.body.style.overflow = ""; }, 1000); };
+    setTimeout(sai, 1800);
+    intro.addEventListener("click", sai); addEventListener("keydown", sai, {once:true});
+  }
+
+  // ——— Campo de pontos do hero (grade que reage ao cursor + sinais em azul) ———
+  const cv = document.getElementById("campo"), hero = document.getElementById("hero");
+  if (cv && !estat && !semMov){
+    const cx = cv.getContext("2d"); let W, H, dpr, pts = [], sinais = [], mx = -1e4, my = -1e4, passo = 34, vis = true;
+    const monta = () => {
+      dpr = Math.min(devicePixelRatio || 1, 2); W = hero.clientWidth; H = hero.clientHeight;
+      cv.width = W*dpr; cv.height = H*dpr; cx.setTransform(dpr,0,0,dpr,0,0);
+      passo = W < 600 ? 26 : 34; pts = [];
+      for (let y = passo/2; y < H; y += passo) for (let x = passo/2; x < W; x += passo) pts.push({x, y});
+    };
+    const novoSinal = () => {
+      const hor = Math.random() < .6, cols = Math.floor(W/passo), rows = Math.floor(H/passo);
+      sinais.push(hor ? {hor, fixo: (Math.floor(Math.random()*rows)+.5)*passo, p: -80, v: 3+Math.random()*3, lim: W}
+                      : {hor, fixo: (Math.floor(Math.random()*cols)+.5)*passo, p: -80, v: 2+Math.random()*2, lim: H});
+    };
+    const quadro = () => {
+      if (vis){
+        cx.clearRect(0,0,W,H);
+        for (const p of pts){
+          const dx = p.x-mx, dy = p.y-my, d = Math.hypot(dx,dy), f = Math.max(0, 1 - d/170);
+          const ox = d ? dx/d*f*10 : 0, oy = d ? dy/d*f*10 : 0;
+          cx.fillStyle = f > 0 ? `rgba(47,107,255,${.18+f*.55})` : "rgba(11,11,12,.2)";
+          const r = 1 + f*1.4; cx.fillRect(p.x+ox-r/2, p.y+oy-r/2, r, r);
+        }
+        if (Math.random() < .02 && sinais.length < 4) novoSinal();
+        sinais = sinais.filter(s => s.p < s.lim + 120);
+        for (const s of sinais){
+          s.p += s.v;
+          const g = s.hor ? cx.createLinearGradient(s.p-120,0,s.p,0) : cx.createLinearGradient(0,s.p-120,0,s.p);
+          g.addColorStop(0,"rgba(47,107,255,0)"); g.addColorStop(1,"rgba(47,107,255,.55)");
+          cx.fillStyle = g;
+          s.hor ? cx.fillRect(s.p-120, s.fixo-.5, 120, 1) : cx.fillRect(s.fixo-.5, s.p-120, 1, 120);
+        }
+      }
+      requestAnimationFrame(quadro);
+    };
+    monta(); addEventListener("resize", monta);
+    new IntersectionObserver(e => vis = e[0].isIntersecting).observe(hero);
+    hero.addEventListener("pointermove", e => {
+      const r = hero.getBoundingClientRect(); mx = e.clientX - r.left; my = e.clientY - r.top;
+      hero.style.setProperty("--mx", mx+"px"); hero.style.setProperty("--my", my+"px");
+      const tr = document.querySelector(".hero .trilha"), b = tr.getBoundingClientRect();
+      const rx = ((e.clientY - b.top)/b.height - .5) * -5, ry = ((e.clientX - b.left)/b.width - .5) * 5;
+      if (raiz.classList.contains("pronto") && raiz.classList.contains("fim")) tr.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg)`;
+    });
+    hero.addEventListener("pointerleave", () => { mx = my = -1e4; document.querySelector(".hero .trilha").style.transform = ""; });
+    quadro();
+  }
+
+  // ——— Barra de progresso de leitura ———
+  const pg = document.getElementById("progresso");
+  addEventListener("scroll", () => { const h = document.documentElement; pg.style.width = (h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+"%"; }, {passive:true});
+
   // ——— Trilha ao vivo do hero (exemplo ilustrativo) ———
   const cenarios = [
     {id:"LEX-42", titulo:"Leitura automática de ofícios", linhas:[
