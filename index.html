@@ -99,6 +99,14 @@ section{padding:clamp(72px,10vw,140px) 0}
 .setor .prova b{color:var(--preto);font-weight:500}
 @media (max-width:900px){.setor-grade{grid-template-columns:1fr}}
 
+/* clientes */
+.cli-grade{display:grid;grid-template-columns:repeat(4,1fr);margin-top:28px;border-top:1px solid var(--preto)}
+.cli-grade div{padding:24px 24px 0 0}
+.cli-grade div + div{padding-left:24px;border-left:1px solid var(--nevoa)}
+.cli-grade strong{display:block;font-family:var(--f-marca);text-transform:uppercase;font-weight:400;font-size:clamp(14px,1.2vw,17px);line-height:1.4;margin-bottom:10px}
+.cli-grade span{display:block;color:var(--grafite);font-size:15px;line-height:1.5}
+@media (max-width:900px){.cli-grade{grid-template-columns:1fr 1fr}.cli-grade div,.cli-grade div + div{padding:20px 16px 20px 0;border-left:0;border-bottom:1px solid var(--nevoa)}}
+
 /* o que fazemos */
 .frentes{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--preto)}
 .frente{padding:32px 32px 8px 0;display:flex;flex-direction:column}
@@ -229,7 +237,7 @@ footer img{height:14px;display:block}
           <li><span>b</span><div><strong>Geração de peças em escala</strong><em>Modelos com regra, revisão e histórico: a mesma peça, certa, centenas de vezes.</em></div></li>
           <li><span>c</span><div><strong>Robôs de acompanhamento</strong><em>Rotinas que consultam tribunais, acompanham prazos e avisam quem precisa agir.</em></div></li>
         </ul>
-        <p class="prova"><b>Em produção hoje</b> em escritórios de advocacia.</p>
+        <p class="prova"><b>Em produção hoje</b> na Queiroz Cavalcanti Advocacia e na Viseu Advogados.</p>
       </article>
 
       <article class="setor">
@@ -241,8 +249,21 @@ footer img{height:14px;display:block}
           <li><span>b</span><div><strong>Vistoria remota</strong><em>O segurado registra o veículo por um link, sem instalar nada; a análise chega pronta.</em></div></li>
           <li><span>c</span><div><strong>Plataformas white-label</strong><em>Um produto, várias operações: cada cliente com sua marca, seus usuários e seu fluxo.</em></div></li>
         </ul>
-        <p class="prova"><b>Em produção hoje</b> em operações de sinistro automotivo.</p>
+        <p class="prova"><b>Em produção hoje</b> com a AbleTech: AbleAuto e AbleVist.</p>
       </article>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTES -->
+<section class="clientes" id="clientes" style="padding:clamp(56px,7vw,96px) 0;border-bottom:1px solid var(--nevoa)">
+  <div class="wrap">
+    <div class="eyebrow revela">Quem já confia na Astrontech</div>
+    <div class="cli-grade revela">
+      <div><strong>Queiroz Cavalcanti Advocacia</strong><span>Geração de documentos e robôs de protocolo</span></div>
+      <div><strong>Viseu Advogados</strong><span>Leitura e classificação de ofícios com IA</span></div>
+      <div><strong>AbleTech</strong><span>Orçamentação de sinistros e vistoria remota</span></div>
+      <div><strong>Margemix</strong><span>Ficha técnica e precificação para food service</span></div>
     </div>
   </div>
 </section>
@@ -297,8 +318,8 @@ footer img{height:14px;display:block}
     </div>
 
     <div class="equipe revela">
-      <h3 class="marca">Um fundador sênior. Uma equipe de agentes<span class="ponto">.</span></h3>
-      <p>O trabalho é conduzido por um engenheiro sênior e executado com uma equipe de agentes de IA, cada um com um papel: análise, construção, revisão, testes. É assim que uma consultoria enxuta entrega com o ritmo e o controle de um time grande, e sem o custo de um.</p>
+      <h3 class="marca">Time enxuto. Engenharia sênior<span class="ponto">.</span></h3>
+      <p>Quem conversa com você é quem desenha e constrói. Sem camadas de gestão no meio: decisões rápidas, contexto que não se perde e o ritmo e o controle de um time grande, sem o custo de um.</p>
     </div>
   </div>
 </section>
@@ -352,8 +373,8 @@ footer img{height:14px;display:block}
     <h2 class="marca" style="margin-top:18px">Tem um processo que deveria ser um produto<span class="ponto">?</span></h2>
     <p>Conte o problema em poucas linhas. Respondemos com perguntas certeiras e, se fizer sentido, uma proposta de primeira entrega.</p>
     <div class="contato">
-      <a class="btn btn-azul chanfro" href="mailto:contato@astrontech.dev?subject=Projeto%20com%20a%20Astrontech">Iniciar um projeto <span class="seta">→</span></a>
-      <span class="email">contato@astrontech.dev</span>
+      <a class="btn btn-azul chanfro" href="mailto:fabio@astrontech.dev?subject=Projeto%20com%20a%20Astrontech">Iniciar um projeto <span class="seta">→</span></a>
+      <span class="email">fabio@astrontech.dev</span>
     </div>
   </div>
 </section>
