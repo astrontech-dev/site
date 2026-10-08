@@ -1,0 +1,3 @@
+Michroma, Sora e JetBrains Mono sao distribuidas pela SIL Open Font License 1.1 (Google Fonts).
+Uso comercial livre, inclusive em logo. https://openfontlicense.org
+O logo astrontech foi convertido em contornos: nao depende da fonte instalada.
